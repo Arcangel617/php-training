@@ -18,7 +18,9 @@
             <p>La actividad actual del WHATWG se centra en el futuro estándar HTML 5, cuyo primer borrador oficial se publicó el 22 de enero de 2008. Debido a la fuerza de las empresas que forman el grupo WHATWG y a la publicación de los borradores de HTML 5.0, en marzo de 2007 el W3C decidió retomar la actividad estandarizadora de HTML.</p>
         </section>
     </li>
-    <li>Qué diferencia existe entre Internet y la www?</li>
+    <li><p>Qué diferencia existe entre Internet y la www?</p>
+        <p>Answer</p>
+    </li>
     <li>Cuál es la principal funcionalidad del servicio de DNS?</li>
     <li>Para que sirve el verbo http HEAD?</li>
     <li>Cómo se denominan comúnmente los clientes para http? Nombre al menos 3.</li>
