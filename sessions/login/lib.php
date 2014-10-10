@@ -7,7 +7,7 @@
  */
 function connect()
 {
-    $connect = mysqli_connect('localhost', 'info', 'Pa$$w0rd', 'users_tasks');
+    $connect = mysqli_connect('localhost', 'root', '', 'users_tasks');
     if (!$connect) {
         throw new Exception('Error trying to conect to DB: ' . mysqli_connect_error());
     }
@@ -33,6 +33,13 @@ function getUser($name)
         logger($exc->getMessage());
         throw $exc;
     }
+}
+
+function blockUser($name)
+{
+    $link = connect();
+    $result = mysqli_query($link, 'UPDATE users SET blocked=1 WHERE name=' . $name);
+    
 }
 
 /**
