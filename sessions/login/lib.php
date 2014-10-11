@@ -35,11 +35,12 @@ function getUser($name)
     }
 }
 
-function blockUser($name)
+function blockUser($array)
 {
     $link = connect();
-    $result = mysqli_query($link, 'UPDATE users SET blocked=1 WHERE name=' . $name);
-    
+    for ($index = 0; $index < count($array); $index++) {
+        mysqli_query($link, "UPDATE users SET blocked=1 WHERE name='".$array[$index]."'");
+    }
 }
 
 /**

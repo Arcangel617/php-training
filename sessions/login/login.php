@@ -7,12 +7,13 @@ if (isset($_POST['name']) && isset($_POST['password']) && !empty($_POST['name'])
     try {
 
         $user = getUser($_POST['name']);
-        $_SESSION['blockUsers'] = array();
-        if ($user) {
-            array_push($_SESSION['blockUsers'], $user);
+        if (!isset($_SESSION['blockedUsers'])) {
+            $_SESSION['blockedUsers'] = array();
         }
-        
-        //echo var_dump($blockUsers); die;
+
+        if ($user) {
+            array_push($_SESSION['blockedUsers'], $user['name']);
+        }
 
 
         if (!is_null($user) && $user['password'] == md5($_POST['password'])) {
@@ -28,13 +29,9 @@ if (isset($_POST['name']) && isset($_POST['password']) && !empty($_POST['name'])
 
                 Header('Location: index.php?loginAttempt=' . $_SESSION['loginAttempt']);
             } else {
-                /*Header('Location: index.php?error=You Have tried many times!');
-                if ($_SESSION['loginAttempt'] = 4) {
-                    foreach ($blockUsers as $value) {
-                        blockUser($value);
-                    }
-                }*/
-                echo var_dump($_SESSION['blockUsers']);
+                blockUser($_SESSION['blockedUsers']);
+                Header('Location: index.php?error=You Have tried many times!');
+                
             }
         }
     } catch (Exception $exc) {
