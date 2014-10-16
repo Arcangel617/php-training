@@ -7,7 +7,11 @@
  */
 function connect()
 {
+<<<<<<< HEAD
     $connect = mysqli_connect('localhost', 'root', '', 'users_tasks');
+=======
+    $connect = mysqli_connect('localhost', 'info', 'Pa$$w0rd', 'todo2');
+>>>>>>> upstream/master
     if (!$connect) {
         throw new Exception('Error trying to conect to DB: ' . mysqli_connect_error());
     }
@@ -97,6 +101,20 @@ function deleteTask($id)
 {
     $link = connect();
     $resutl = mysqli_query($link, 'DELETE FROM tasks WHERE taskid=' . $id);
+    
+    return $resutl;
+}
+
+/**
+ * Bloquea el usuario
+ * @param type $username
+ * @return type
+ */
+function updateBlocked($username)
+{
+    $user = getUser($username);
+    $link = connect();
+    $resutl = mysqli_query($link, 'UPDATE users SET Blocked = TRUE WHERE user_id='.$user['user_id'] );
     
     return $resutl;
 }
