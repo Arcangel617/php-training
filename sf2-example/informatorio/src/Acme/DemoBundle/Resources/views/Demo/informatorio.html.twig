@@ -1,0 +1,13 @@
+{# empty Twig template #}
+{% extends "AcmeDemoBundle::informatorioBase.html.twig" %}
+
+{% block title "Informatorio" %}
+
+{% block content_header '' %}
+
+{% block informatorio %}
+    
+    {{parent()}}
+    <h1 class="title">Hello <b>{{ result }}</b></h1>
+    
+{% endblock %}
