@@ -114,4 +114,25 @@ class DemoController extends Controller
     {
         return new Response('Response from action2 with '.$name);
     }
+    
+    /**
+     * @Route("/fake", name="_demo_fake")
+     */
+    public function fakeAction()
+    {
+        throw $this->createNotFoundException("rajacá chau");
+    }
+    
+    /**
+     * @Route("/parameters",name="_demo_parameters")
+     */
+//    public function parametersAction()
+    public function parametersAction(Request $request)
+    {
+//        return new Response('I am here '.$_GET['datos']);
+//        return new Response('I am here '.$request->query->get('datos'));
+        $isAjax = $request->isXmlHttpRequest();
+        $post = $request->request->get('datos');
+        return new Response('I am here '.$post['datos']);
+    }
 }   

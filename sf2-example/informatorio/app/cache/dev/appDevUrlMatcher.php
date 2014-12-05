@@ -244,6 +244,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
+            // _demo_fake
+            if ($pathinfo === '/demo/fake') {
+                return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::fakeAction',  '_route' => '_demo_fake',);
+            }
+
+            // _demo_parameters
+            if ($pathinfo === '/demo/parameters') {
+                return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::parametersAction',  '_route' => '_demo_parameters',);
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
