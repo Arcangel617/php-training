@@ -59,6 +59,12 @@ class __TwigTemplate_8e704476a23108613cccc54158f8e2c2cfcfc319802be56e13fd8b8bad4
         echo $this->env->getExtension('routing')->getPath("_demo_contact");
         echo "\">Send a Message</a></li>
     </ul>
+        
+        ";
+        // line 16
+        echo "        ";
+        echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("AcmeDemoBundle:Demo:component1"));
+        echo "
 ";
     }
 
@@ -74,6 +80,6 @@ class __TwigTemplate_8e704476a23108613cccc54158f8e2c2cfcfc319802be56e13fd8b8bad4
 
     public function getDebugInfo()
     {
-        return array (  59 => 12,  53 => 11,  49 => 10,  45 => 8,  42 => 7,  36 => 5,  30 => 3,);
+        return array (  65 => 16,  59 => 12,  53 => 11,  49 => 10,  45 => 8,  42 => 7,  36 => 5,  30 => 3,);
     }
 }

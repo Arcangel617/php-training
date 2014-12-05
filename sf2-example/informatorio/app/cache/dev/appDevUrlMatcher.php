@@ -202,6 +202,25 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => '_demo_informatorio')), array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::informatorioAction',));
             }
 
+            // _demo_component1
+            if (rtrim($pathinfo, '/') === '/demo/component1') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', '_demo_component1');
+                }
+
+                return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::component1Action',  '_route' => '_demo_component1',);
+            }
+
+            // _demo_from
+            if ($pathinfo === '/demo/from') {
+                return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::fromAction',  '_route' => '_demo_from',);
+            }
+
+            // _demo_to
+            if (0 === strpos($pathinfo, '/demo/to') && preg_match('#^/demo/to/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => '_demo_to')), array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::toAction',));
+            }
+
             // _demo_hello
             if (0 === strpos($pathinfo, '/demo/hello') && preg_match('#^/demo/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => '_demo_hello')), array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::helloAction',));
@@ -210,6 +229,19 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             // _demo_contact
             if ($pathinfo === '/demo/contact') {
                 return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::contactAction',  '_route' => '_demo_contact',);
+            }
+
+            if (0 === strpos($pathinfo, '/demo/action')) {
+                // _demo_action1
+                if ($pathinfo === '/demo/action1') {
+                    return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::action1Action',  '_route' => '_demo_action1',);
+                }
+
+                // _demo_action2
+                if (0 === strpos($pathinfo, '/demo/action2') && preg_match('#^/demo/action2/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => '_demo_action2')), array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::action2Action',));
+                }
+
             }
 
         }
